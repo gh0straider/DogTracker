@@ -9,29 +9,29 @@ import android.net.Uri;
  */
 public class DogLoader extends CursorLoader {
     public static DogLoader newAllArticlesInstance(Context context) {
-        return new DogLoader(context, DogsContract.Items.buildDirUri());
+        return new DogLoader(context, DogsContract.Dogs.buildDirUri());
     }
 
     public static DogLoader newInstanceForItemId(Context context, long itemId) {
-        return new DogLoader(context, DogsContract.Items.buildItemUri(itemId));
+        return new DogLoader(context, DogsContract.Dogs.buildItemUri(itemId));
     }
 
     private DogLoader(Context context, Uri uri) {
-        super(context, uri, Query.PROJECTION, null, null, DogsContract.Items.DEFAULT_SORT);
+        super(context, uri, Query.PROJECTION, null, null, DogsContract.Dogs.DEFAULT_SORT);
     }
 
     public interface Query {
         String[] PROJECTION = {
-                DogsContract.Items._ID,
-                DogsContract.Items.NAME,
-                DogsContract.Items.BIRTH_DATE,
-                DogsContract.Items.TAG_NUMBER,
-                DogsContract.Items.RABIES_DATE,
-                DogsContract.Items.PARVO_DATE,
-                DogsContract.Items.DISTEMPER_DATE,
-                DogsContract.Items.WORM_DATE,
-                DogsContract.Items.CYCLE_DATE,
-                DogsContract.Items.PHOTO_URL,
+                DogsContract.Dogs._ID,
+                DogsContract.Dogs.NAME,
+                DogsContract.Dogs.BIRTH_DATE,
+                DogsContract.Dogs.TAG_NUMBER,
+                DogsContract.Dogs.RABIES_DATE,
+                DogsContract.Dogs.PARVO_DATE,
+                DogsContract.Dogs.DISTEMPER_DATE,
+                DogsContract.Dogs.WORM_DATE,
+                DogsContract.Dogs.CYCLE_DATE,
+                DogsContract.Dogs.PHOTO_URL,
         };
 
         int _ID = 0;

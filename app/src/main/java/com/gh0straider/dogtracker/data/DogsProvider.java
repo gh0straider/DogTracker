@@ -46,9 +46,9 @@ public class DogsProvider extends ContentProvider {
 		final int match = sUriMatcher.match(uri);
 		switch (match) {
 			case DOGS:
-				return DogsContract.Items.CONTENT_TYPE;
+				return DogsContract.Dogs.CONTENT_TYPE;
 			case DOGS__ID:
-				return DogsContract.Items.CONTENT_ITEM_TYPE;
+				return DogsContract.Dogs.CONTENT_ITEM_TYPE;
 			default:
 				throw new UnsupportedOperationException("Unknown uri: " + uri);
 		}
@@ -73,7 +73,7 @@ public class DogsProvider extends ContentProvider {
 			case DOGS: {
 				final long _id = db.insertOrThrow(Tables.DOGS, null, values);
 				getContext().getContentResolver().notifyChange(uri, null);
-				return DogsContract.Items.buildItemUri(_id);
+				return DogsContract.Dogs.buildItemUri(_id);
 			}
 			default: {
 				throw new UnsupportedOperationException("Unknown uri: " + uri);
@@ -111,7 +111,7 @@ public class DogsProvider extends ContentProvider {
 			}
 			case DOGS__ID: {
 				final String _id = paths.get(1);
-				return builder.table(Tables.DOGS).where(DogsContract.Items._ID + "=?", _id);
+				return builder.table(Tables.DOGS).where(DogsContract.ItemsColumns._ID + "=?", _id);
 			}
 			default: {
 				throw new UnsupportedOperationException("Unknown uri: " + uri);
